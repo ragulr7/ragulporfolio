@@ -1,0 +1,85 @@
+/* Resetting default margins and paddings */
+body, h1, h2, h3, h4, h5, h6, p, ul, li, table, tr, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+/* Setting up basic styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Styling for images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Additional styles specific to sections */
+#about {
+    background-color: #f4f4f4;
+}
+
+#portfolio {
+    background-color: #e6e6e6;
+}
+
+/* Styles for the education table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}

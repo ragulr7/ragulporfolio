@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragul B - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header nav ul li a:hover {
+            color: #ff9800;
+        }
+
+        .section {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #about {
+            background-color: #ff8a80;
+        }
+
+        #portfolio {
+            background-color: #81c784;
+        }
+
+        #education {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact {
+            background-color: #64b5f6;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .about-content img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            animation: bounceIn 1s ease;
+        }
+
+        .about-content p {
+            text-align: center;
+            animation: fadeInUp 1s ease;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .section-item {
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            background-color: #4db6ac;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease;
+            perspective: 1000px;
+            transition: transform 0.5s ease;
+        }
+
+        .section-item:hover {
+            transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+        }
+
+        .section-item h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .section-item ul {
+            padding-left: 20px;
+        }
+
+        .section-item ul li {
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        table:hover {
+            transform: scale(1.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            margin-top: 20px;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll animation */
+        .scroll-section {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .scroll-section .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            transition: transform 1s;
+        }
+
+        .scroll-section .content.hidden {
+            transform: translateZ(-1000px) rotateY(90deg);
+        }
+
+        .scroll-section .content.visible {
+            transform: translateZ(0) rotateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="section scroll-section">
+        <div class="content hidden">
+            <div class="container">
+                <h1 class="section-heading">About Me</h1>
+                <div class="about-content">
+                    <img src="C:\fullstack\Portfolio\IMG_20220324_202841_271.jpg" alt="Ragul B">
+                    <p>
+                        Hello, I'm Ragul B. I am a passionate and creative web developer with a strong
+                        background in front-end and back-end development. I love building interactive and
+                        user-friendly websites that make a positive impact.
+                    </p>
+                    <p>
+                        I have a deep interest in design and enjoy creating visually appealing websites that
+                        not only function well but also look great. My goal is to deliver high-quality web
+                        solutions that meet the needs of clients and users alike.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section scroll-section">
+        <div class="content hidden">
+            <div class="container">
+                <h1 class="section-heading">Portfolio</h1>
+                <div class="portfolio-content">
+                    <div class="section-item">
+                        <h3>Coding Skills and Achievements</h3>
+                        <ul>
+                            <li>Proficient in HTML, CSS</li>
+                            <li>Knowledge about programming languages such as Java</li>
+                            <li>Developed responsive and mobile-friendly websites</li>
+                        </ul>
+                    </div>
+                    <div class="section-item">
+                        <h3>Achievements</h3>
+                        <ul>
+                            <li>Attended Workshop in VIT about IOT</li>
+                            <li>Certified on Programming in JAVA-NPTEL</li>
+                        </ul>
+                    </div>
+                    <div class="section-item">
+                        <h3>Project</h3>
+                        <ul>
+                            <li>Smart Bin -
+                                Tools - Arduino IDE , Arduini UNE , Sensors 
+                            </li> 
+                            
+                            
+                        </ul>
+                    </div>
+                    <div class="section-item">
+                        <h3>Motivation</h3>
+                        <ul>
+                            <li>"Don't look up, God is not coming to save you. You have to fight it out"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section scroll-section">
+        <div class="content hidden">
+            <div class="container">
+                <h2>Education</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Institution</th>
+                            <th>Degree</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2018 - 2019</td>
+                            <td>Ponnu Matriculation Higher Secondary School</td>
+                            <td>10TH</td>
+                        </tr>
+                        <tr>
+                            <td>2020 - 2021</td>
+                            <td>Ponnu Matriculation Higher Secondary School</td>
+                            <td>12TH</td>
+                        </tr>
+                        <tr>
+                            <td>2021 - 2025</td>
+                            <td>Dr.N.G.P Institute of Technology</td>
+                            <td>B.TECH</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section scroll-section">
+        <div class="content hidden">
+            <div class="container">
+                <h2>Contact Information</h2>
+                <p>Feel free to get in touch with me through the following contact details:</p>
+                <ul>
+                    <li>Email: ragul.balasubramaniam@example.com</li>
+                    <li>Phone: +91-8778933301</li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/ragul-b" target="_blank">linkedin.com/in/ragul-b</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ragul B. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('.scroll-section .content');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('hidden');
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                    entry.target.classList.add('hidden');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
